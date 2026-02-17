@@ -9,3 +9,5 @@ Mathieu Peroche (3)
 1.Univ. Gustave Eiffel, CEREMA, UMRAE, 44344 Bouguenais, France, 
 2. LASTIG, IGN, ENSG, Univ. Gustave Eiffel, 73 Avenue de Paris, 94165 Saint-Mande, France 
 3. Universite Paul Valery, Rte de Mende, 34090 Montpellier, France
+
+https://universite-gustave-eiffel.github.io/WarningSirensOptimizationAudibility/
