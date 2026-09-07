@@ -525,10 +525,22 @@
             
             map = L.map('map').setView(center, 11);
             
-            // Add tile layer
-            L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+            const reliefLayer = L.tileLayer('https://tile.top-o-map.com/relief/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                minZoom: 0,
+                attribution: '© top-o-map.com'
+            });
+            
+            const streetLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
                 attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
+            });
+            
+            reliefLayer.addTo(map);
+            
+            L.control.layers({
+                'Relief': reliefLayer,
+                'Plan': streetLayer
+            }, null, {position: 'topright'}).addTo(map);
             
             // Initialize layer groups
             sirenMarkersGroup = L.layerGroup().addTo(map);
