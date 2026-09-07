@@ -532,15 +532,27 @@
             });
             
             const streetLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+                maxZoom: 20,
                 attribution: '© OpenStreetMap contributors'
             });
             
+            const esriLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+                maxZoom: 20,
+                attribution: 'Tiles © Esri'
+            });
+            
             reliefLayer.addTo(map);
+            map.setMaxZoom(reliefLayer.options.maxZoom);
             
             L.control.layers({
                 'Relief': reliefLayer,
-                'Plan': streetLayer
+                'Plan': streetLayer,
+                'Esri Light Gray': esriLayer
             }, null, {position: 'topright'}).addTo(map);
+            
+            map.on('baselayerchange', function(e) {
+                map.setMaxZoom(e.layer.options.maxZoom || 18);
+            });
             
             // Initialize layer groups
             sirenMarkersGroup = L.layerGroup().addTo(map);
